@@ -1,4 +1,4 @@
-# DINOv3 Beats Specialized Detectors: A Simple Foundation Model Baseline for Image Forensics
+# Forensics Without Forensic Design: DINOv3 as a Strong Baseline for Image Manipulation Localization
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
@@ -26,7 +26,7 @@
 ## Architecture
 
 <p align="center">
-  <img src="assets/architecture.png" width="700" alt="Architecture diagram"/>
+  <img src="assets/architecture.png" width="800" alt="Architecture diagram"/>
 </p>
 
 The backbone (DINOv3 ViT, frozen) extracts patch-level features via `get_intermediate_layers`. LoRA matrices injected into every QKV projection allow task-specific attention adaptation with minimal parameters. A lightweight 3-conv segmentation head (Conv→BN→ReLU ×2, then Conv1×1) predicts the pixel-level manipulation mask, upsampled to input resolution via bilinear interpolation.
@@ -38,34 +38,30 @@ The backbone (DINOv3 ViT, frozen) extracts patch-level features via `get_interme
 ### CAT-Net Protocol (4-dataset avg pixel-F1)
 *Training: CASIA-v2 + FantasticReality + IMD2020 + TampCOCO. Test: CASIAv1 / Columbia / NIST16 / Coverage.*
 
-| Method | Params | CASIAv1 | Columbia | NIST16 | Coverage | **Avg F1** |
-|---|---|---|---|---|---|---|
-| PSCC-Net | 3.7 M | — | — | — | — | 0.577 |
-| Mesorch (AAAI'25) | 85.8 M | — | — | — | — | 0.677 |
-| CAT-Net | 116.7 M | — | — | — | — | 0.601 |
-| MVSS-Net | 150.5 M | — | — | — | — | 0.536 |
-| **Ours ViT-S LoRA r=32** | 1.4 M | 0.787 | 0.923 | 0.462 | 0.646 | **0.704** |
-| **Ours ViT-B LoRA r=64** | 5.7 M | 0.840 | 0.938 | 0.565 | 0.715 | **0.780** |
-| **Ours ViT-L LoRA r=32** | 9.0 M | 0.907 | 0.941 | 0.636 | 0.905 | **0.847** |
-| **Ours ViT-L LoRA r=64** | 12.2 M | 0.908 | 0.927 | 0.633 | 0.882 | **0.837** |
+| Method | CASIAv1 | Columbia | NIST16 | Coverage | **Avg F1** |
+|---|---|---|---|---|---|
+| PSCC-Net | — | — | — | — | 0.577 |
+| CAT-Net | — | — | — | — | 0.601 |
+| MVSS-Net | — | — | — | — | 0.536 |
+| TruFor | — | — | — | — | 0.627 |
+| Mesorch (AAAI'25) | — | — | — | — | 0.677 |
+| **Ours ViT-S LoRA r=32** | 0.787 | 0.923 | 0.462 | 0.646 | **0.704** |
+| **Ours ViT-B LoRA r=64** | 0.863 | 0.904 | 0.570 | 0.784 | **0.780** |
+| **Ours ViT-L LoRA r=32** | **0.907** | **0.941** | **0.636** | **0.905** | **0.847** |
 
 ### MVSS-Net Protocol (5-dataset avg pixel-F1)
 *Training: CASIA-v2 only (5,123 images). Test: CASIAv1 / Columbia / NIST16 / Coverage / IMD2020.*
 
 | Method | CASIAv1 | Columbia | NIST16 | Coverage | IMD2020 | **Avg F1** |
 |---|---|---|---|---|---|---|
+| MVSS-Net | — | — | — | — | — | 0.341 |
+| CAT-Net | — | — | — | — | — | 0.401 |
+| IML-ViT | — | — | — | — | — | 0.519 |
+| TruFor | — | — | — | — | — | 0.530 |
+| **Ours ViT-S LoRA r=32** | 0.622 | 0.646 | 0.324 | 0.363 | 0.346 | **0.460** |
+| **Ours ViT-B LoRA r=64** | 0.761 | 0.820 | 0.465 | 0.545 | 0.475 | **0.613** |
 | **Ours ViT-L LoRA r=32** | 0.867 | 0.943 | 0.589 | 0.822 | 0.628 | **0.770** |
-| **Ours ViT-L LoRA r=64** | 0.873 | 0.915 | 0.621 | 0.820 | 0.641 | **0.774** |
-| FullFT ViT-L *(collapse)* | 0.852 | 0.842 | 0.532 | 0.679 | 0.499 | *0.681* |
-| FullFT ViT-S *(collapse)* | 0.209 | 0.364 | 0.189 | 0.154 | 0.186 | *0.221* |
-
-> FullFT converges to trivial all-zero predictions early in training on small datasets — see `assets/fullft_collapse_curves.png`. LoRA avoids this via low-rank regularization.
-
-### Parameter Efficiency
-
-<p align="center">
-  <img src="assets/param_efficiency_cat.png" width="600" alt="Parameter efficiency"/>
-</p>
+| **Ours ViT-L LoRA r=64** | **0.873** | 0.915 | **0.621** | 0.820 | **0.641** | **0.774** |
 
 ---
 
@@ -188,7 +184,7 @@ model = DINOv3ForensicsLoRA.from_pretrained(
 
 ```bibtex
 @article{dinov3iml2026,
-  title   = {DINOv3 Beats Specialized Detectors: A Simple Foundation Model Baseline for Image Forensics},
+  title   = {Forensics Without Forensic Design: DINOv3 as a Strong Baseline for Image Manipulation Localization},
   author  = {[Authors]},
   journal = {[Venue]},
   year    = {2026},

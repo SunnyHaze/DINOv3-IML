@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
+[![arXiv](https://img.shields.io/badge/arXiv-2604.16083-b31b1b.svg)](https://arxiv.org/abs/2604.16083)
 
 > **TL;DR** — Freeze DINOv3, inject LoRA on QKV, attach a 3-conv head. With only **9.1 M trainable parameters**, this simple recipe outperforms all prior specialized detectors on both the CAT-Net and MVSS-Net evaluation protocols.
 
@@ -18,8 +19,6 @@
 
 - **State-of-the-art** avg pixel-F1 on CAT-Net protocol: **0.847** (vs. 0.677 prior SOTA)
 - Only **9.1 M trainable parameters** — LoRA on QKV + 3-conv head
-- **Frozen backbone** — no catastrophic forgetting, no collapse on small datasets
-- **Simple architecture** — no specialized forensic components, no frequency analysis, no attention manipulation
 
 ---
 

@@ -15,8 +15,6 @@
 
 ---
 
----
-
 ## Architecture
 
 <p align="center">

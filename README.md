@@ -86,12 +86,12 @@ A frozen DINOv3 ViT backbone with LoRA injected on QKV projections produces dens
 
 | Config | Protocol | Avg F1 | Trainable params | Download |
 |---|---|---|---|---|
-| ViT-L LoRA r=32 | CAT | **0.847** | 9.1 M | [Google Drive](https://drive.google.com/drive/folders/1X9EZUnvg7FLBvGgR_V7mViZUhiD5r7YT) |
-| ViT-L LoRA r=64 | CAT | 0.837 | 12.2 M | [Google Drive](https://drive.google.com/drive/folders/1X9EZUnvg7FLBvGgR_V7mViZUhiD5r7YT) |
-| ViT-L LoRA r=64 | MVSS | **0.774** | 12.2 M | [Google Drive](https://drive.google.com/drive/folders/1X9EZUnvg7FLBvGgR_V7mViZUhiD5r7YT) |
-| ViT-L LoRA r=32 | MVSS | 0.770 | 9.1 M | [Google Drive](https://drive.google.com/drive/folders/1X9EZUnvg7FLBvGgR_V7mViZUhiD5r7YT) |
-| ViT-B LoRA r=64 | CAT | 0.780 | 5.7 M | [Google Drive](https://drive.google.com/drive/folders/1X9EZUnvg7FLBvGgR_V7mViZUhiD5r7YT) |
-| ViT-S LoRA r=32 | CAT | 0.704 | 1.4 M | [Google Drive](https://drive.google.com/drive/folders/1X9EZUnvg7FLBvGgR_V7mViZUhiD5r7YT) |
+| ViT-L LoRA r=32 | CAT | **0.847** | 9.1 M | [Google Drive](https://drive.google.com/drive/folders/125leLub_M-lICa1ILTOL-FCz4ZY6eutj) |
+| ViT-L LoRA r=64 | CAT | 0.837 | 12.2 M | [Google Drive](https://drive.google.com/drive/folders/1ygQjiQqtd2C7aGL6TdPh7hQC-bXw4k45) |
+| ViT-L LoRA r=64 | MVSS | **0.774** | 12.2 M | [Google Drive](https://drive.google.com/drive/folders/1hallC_SjOBC6lHtq1sJfD-x3mjI9WyjU) |
+| ViT-L LoRA r=32 | MVSS | 0.770 | 9.1 M | [Google Drive](https://drive.google.com/drive/folders/17QQJ2HNtn8SCgjkyZgc-1Yr65z6T48Rs) |
+| ViT-B LoRA r=64 | CAT | 0.780 | 5.7 M | [Google Drive](https://drive.google.com/drive/folders/16c87obUh0VG0wzQP5lOWuEkjyLwo6toP) |
+| ViT-S LoRA r=32 | CAT | 0.704 | 1.4 M | [Google Drive](https://drive.google.com/drive/folders/1YtHrQ9-j74OK3XzhYVsIKZZAodhcCNsS) |
 
 DINOv3 backbone weights: see the [DINOv3 / DINOv2 repository](https://github.com/facebookresearch/dinov2).
 

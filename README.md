@@ -15,11 +15,6 @@
 
 ---
 
-## Highlights
-
-- **State-of-the-art** avg pixel-F1 on CAT-Net protocol: **0.847** (vs. 0.677 prior SOTA)
-- Only **9.1 M trainable parameters** — LoRA on QKV + 3-conv head
-
 ---
 
 ## Architecture

@@ -118,13 +118,6 @@ Results may vary ±0.005 depending on hardware and random seed.
 
 ---
 
-## Inference on Pretrained Checkpoints
+## Inference
 
-```bash
-python inference.py \
-    --image assets/teaser_input.jpg \
-    --checkpoint checkpoints/cat_vitl_lora_r32.pth \
-    --dinov3_repo /path/to/dinov3 \
-    --dinov3_weights /path/to/dinov3_vitl16_pretrain.pth \
-    --output predicted_mask.png
-```
+For a quick single-image inference example, use the command shown in `README.md`.

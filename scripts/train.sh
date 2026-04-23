@@ -36,18 +36,23 @@ echo "========================================"
 
 mkdir -p "$OUTPUT_DIR"
 
-# IMDLBenCo training entry point
+# Local training entry point registers this repo's custom models first.
 torchrun \
     --nproc_per_node="$NPROC" \
     --master_port="$MASTER_PORT" \
-    -m IMDLBenCo.training_scripts.train \
+    train.py \
     $(python3 -c "
-import yaml, sys
+import shlex
+import yaml
 d = yaml.safe_load(open('$CONFIG'))
 skip = {'model', 'data_path', 'test_data_path', 'dinov3_repo_path', 'dinov3_weights_path'}
 for k, v in d.items():
     if k not in skip:
-        print(f'--{k} {v}', end=' ')
+        if isinstance(v, bool):
+            if v:
+                print(f'--{k}', end=' ')
+        else:
+            print(f'--{k} {shlex.quote(str(v))}', end=' ')
 ") \
     --model "$MODEL" \
     --data_path "$(python3 -c "import yaml; print(yaml.safe_load(open('$CONFIG'))['data_path'])")" \

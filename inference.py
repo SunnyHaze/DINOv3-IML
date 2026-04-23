@@ -27,8 +27,8 @@ import torch
 from PIL import Image
 
 # ImageNet normalization (used by DINOv3)
-_MEAN = [0.485, 0.456, 0.406]
-_STD  = [0.229, 0.224, 0.225]
+_MEAN = np.array([0.485, 0.456, 0.406], dtype=np.float32)
+_STD = np.array([0.229, 0.224, 0.225], dtype=np.float32)
 
 
 def _load_and_preprocess(image_path: str, image_size: int = 512) -> torch.Tensor:
@@ -37,7 +37,7 @@ def _load_and_preprocess(image_path: str, image_size: int = 512) -> torch.Tensor
         (image_size, image_size), Image.BILINEAR
     )
     arr = np.array(img, dtype=np.float32) / 255.0
-    arr = (arr - _MEAN) / _STD                       # (H, W, 3)
+    arr = ((arr - _MEAN) / _STD).astype(np.float32)  # (H, W, 3)
     tensor = torch.from_numpy(arr).permute(2, 0, 1)  # (3, H, W)
     return tensor.unsqueeze(0)                        # (1, 3, H, W)
 
